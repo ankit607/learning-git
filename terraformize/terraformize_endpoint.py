@@ -6,27 +6,11 @@ from typing import Optional, Tuple
 import os
 
 
-API_VERSION = "v1"
+API_VERSION = "
 
-
-app = Flask(__name__)
-basic_auth = HTTPBasicAuth(realm='terraformize')
-token_auth = HTTPTokenAuth('Bearer')
-multi_auth = MultiAuth(basic_auth, token_auth)
-configuration = read_configurations(os.getenv("CONFIG_DIR", "config"))
-
-
-def terraform_return_code_to_http_code(terraform_return_code: int) -> int:
-    """
     Converts the exit code given by terraform to HTTP return code
 
     Arguments:
-        :param terraform_return_code: the exit code given by terraform
-
-    Returns:
-        :return return_code: 200 if terraform exit code was 0, 400 otherwise
-    """
-    if terraform_return_code == 0:
         return_code = 200
     else:
         return_code = 400
